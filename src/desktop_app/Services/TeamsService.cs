@@ -6,17 +6,17 @@ using Microsoft.Kiota.Abstractions.Authentication;
 
 namespace SpotifyNowPlaying.Services;
 
-public sealed class TeamsService : IDisposable
+public sealed class TeamsService : ITeamsService, IDisposable
 {
     private static readonly string[] Scopes = ["Presence.ReadWrite", "User.Read"];
 
-    private readonly SettingsService _settings;
+    private readonly ISettingsService _settings;
     private IPublicClientApplication? _msalApp;
     private GraphServiceClient? _graphClient;
     private string? _connectedUser;
     private string? _userId;
 
-    public TeamsService(SettingsService settings)
+    public TeamsService(ISettingsService settings)
     {
         _settings = settings;
     }

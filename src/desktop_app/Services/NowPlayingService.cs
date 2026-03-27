@@ -2,18 +2,18 @@ using SpotifyNowPlaying.Models;
 
 namespace SpotifyNowPlaying.Services;
 
-public sealed class NowPlayingService : IDisposable
+public sealed class NowPlayingService : INowPlayingService, IDisposable
 {
-    private readonly SpotifyService _spotify;
-    private readonly TeamsService _teams;
-    private readonly SettingsService _settings;
+    private readonly ISpotifyService _spotify;
+    private readonly ITeamsService _teams;
+    private readonly ISettingsService _settings;
 
     private CancellationTokenSource? _cts;
     private Task? _pollingTask;
     private TrackInfo? _lastTrack;
     private bool _lastWasCleared;
 
-    public NowPlayingService(SpotifyService spotify, TeamsService teams, SettingsService settings)
+    public NowPlayingService(ISpotifyService spotify, ITeamsService teams, ISettingsService settings)
     {
         _spotify = spotify;
         _teams = teams;

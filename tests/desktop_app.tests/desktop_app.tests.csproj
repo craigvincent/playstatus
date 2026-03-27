@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>SpotifyNowPlaying.Tests</RootNamespace>
+    <!-- Allow test naming conventions (underscores) and suppress test-irrelevant warnings -->
+    <NoWarn>$(NoWarn);CA1707;CA1816</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Headless.XUnit" Version="11.3.12" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.12" />
+    <PackageReference Include="NSubstitute" Version="5.*" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
+    <PackageReference Include="xunit" Version="*" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\desktop_app\desktop_app.csproj" />
+  </ItemGroup>
+</Project>

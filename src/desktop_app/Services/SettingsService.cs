@@ -3,7 +3,7 @@ using SpotifyNowPlaying.Models;
 
 namespace SpotifyNowPlaying.Services;
 
-public sealed class SettingsService
+public sealed class SettingsService : ISettingsService
 {
     private static readonly string SettingsDir =
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TeamsNowPlaying");

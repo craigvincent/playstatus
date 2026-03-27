@@ -6,10 +6,10 @@ namespace SpotifyNowPlaying.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private readonly SettingsService _settings;
-    private readonly SpotifyService _spotify;
-    private readonly TeamsService _teams;
-    private readonly NowPlayingService _nowPlaying;
+    private readonly ISettingsService _settings;
+    private readonly ISpotifyService _spotify;
+    private readonly ITeamsService _teams;
+    private readonly INowPlayingService _nowPlaying;
 
     [ObservableProperty] private string _spotifyClientId = string.Empty;
     [ObservableProperty] private string _spotifyStatus = "Not connected";
@@ -39,10 +39,10 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     public MainWindowViewModel(
-        SettingsService settings,
-        SpotifyService spotify,
-        TeamsService teams,
-        NowPlayingService nowPlaying)
+        ISettingsService settings,
+        ISpotifyService spotify,
+        ITeamsService teams,
+        INowPlayingService nowPlaying)
     {
         _settings = settings;
         _spotify = spotify;

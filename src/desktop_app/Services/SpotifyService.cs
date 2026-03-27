@@ -4,16 +4,16 @@ using SpotifyNowPlaying.Models;
 
 namespace SpotifyNowPlaying.Services;
 
-public sealed class SpotifyService
+public sealed class SpotifyService : ISpotifyService
 {
     private const string CallbackUrl = "http://127.0.0.1:5543/callback";
     private const int CallbackPort = 5543;
 
-    private readonly SettingsService _settings;
+    private readonly ISettingsService _settings;
     private SpotifyClient? _client;
     private string? _connectedUser;
 
-    public SpotifyService(SettingsService settings)
+    public SpotifyService(ISettingsService settings)
     {
         _settings = settings;
     }
