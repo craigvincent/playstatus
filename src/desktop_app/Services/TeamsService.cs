@@ -4,7 +4,7 @@ using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.Kiota.Abstractions.Authentication;
 
-namespace TeamsNowPlaying.Services;
+namespace SpotifyNowPlaying.Services;
 
 public sealed class TeamsService : IDisposable
 {

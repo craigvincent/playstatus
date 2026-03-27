@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/desktop_app/desktop_app.csproj" />
+  </Folder>
+</Solution>

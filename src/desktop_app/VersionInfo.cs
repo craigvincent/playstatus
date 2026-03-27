@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace TeamsNowPlaying;
+namespace SpotifyNowPlaying;
 
 public static class VersionInfo
 {

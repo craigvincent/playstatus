@@ -1,4 +1,4 @@
-namespace TeamsNowPlaying.Models;
+namespace SpotifyNowPlaying.Models;
 
 public sealed record TrackInfo(string Artist, string Title)
 {

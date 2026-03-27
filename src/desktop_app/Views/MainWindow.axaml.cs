@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace TeamsNowPlaying.Views;
+namespace SpotifyNowPlaying.Views;
 
 public partial class MainWindow : Window
 {
