@@ -1,6 +1,9 @@
-# Teams Now Playing
+# Spotify Now Playing
 
-A Windows system-tray application that publishes your currently playing Spotify track to your Microsoft Teams status message.
+A system-tray application that publishes your currently playing Spotify track to your Microsoft Teams status message.
+
+Just want to download the latest version of the app? Check out the
+[Latest Release](https://github.com/craigvincent/spotify_nowplaying/releases/latest) page to get the newest version.
 
 ## Features
 
@@ -24,7 +27,7 @@ A Windows system-tray application that publishes your currently playing Spotify 
 
 1. Go to [Azure Portal → App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
 2. Click **New registration**
-3. Set a name (e.g. "Teams Now Playing")
+3. Set a name (e.g. "Spotify Now Playing")
 4. Under **Supported account types**, choose your organisation or "Accounts in any organizational directory"
 5. Under **Redirect URI**, add **Public client/native** with value `http://localhost`
 6. After creation, go to **API Permissions** → **Add a permission** → **Microsoft Graph** → **Delegated permissions**:
@@ -37,11 +40,11 @@ A Windows system-tray application that publishes your currently playing Spotify 
 
 ```bash
 # Clone and build
-cd teams_nowplaying
+cd spotify_nowplaying
 dotnet build
 
 # Run
-dotnet run --project src/TeamsNowPlaying
+dotnet run --project src/desktop_app
 ```
 
 On first launch the app will appear in your system tray. Right-click the tray icon and choose **Open Settings** to configure:

@@ -1,8 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using TeamsNowPlaying.Services;
+using SpotifyNowPlaying.Services;
 
-namespace TeamsNowPlaying.ViewModels;
+namespace SpotifyNowPlaying.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {

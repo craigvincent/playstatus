@@ -8,7 +8,7 @@ on:
 
 env:
   DOTNET_VERSION: "10.0.x"
-  PROJECT: src/TeamsNowPlaying/TeamsNowPlaying.csproj
+  PROJECT: src/desktop_app/desktop_app.csproj
 
 jobs:
   build:
@@ -17,13 +17,13 @@ jobs:
         include:
           - os: windows-latest
             rid: win-x64
-            artifact: TeamsNowPlaying-win-x64
+            artifact: SpotifyNowPlaying-win-x64
           - os: macos-latest
             rid: osx-x64
-            artifact: TeamsNowPlaying-osx-x64
+            artifact: SpotifyNowPlaying-osx-x64
           - os: macos-latest
             rid: osx-arm64
-            artifact: TeamsNowPlaying-osx-arm64
+            artifact: SpotifyNowPlaying-osx-arm64
 
     name: Build (${{ matrix.rid }})
     runs-on: ${{ matrix.os }}

@@ -1,6 +1,6 @@
 using Avalonia;
 
-namespace TeamsNowPlaying;
+namespace SpotifyNowPlaying;
 
 internal sealed class Program
 {

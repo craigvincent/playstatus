@@ -4,11 +4,11 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
-using TeamsNowPlaying.Services;
-using TeamsNowPlaying.ViewModels;
-using TeamsNowPlaying.Views;
+using SpotifyNowPlaying.Services;
+using SpotifyNowPlaying.ViewModels;
+using SpotifyNowPlaying.Views;
 
-namespace TeamsNowPlaying;
+namespace SpotifyNowPlaying;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("IDisposable", "CA1001:Types that own disposable fields should be disposable",
     Justification = "Avalonia Application base class doesn't support IDisposable; _trayIcon is disposed on exit")]
@@ -89,7 +89,7 @@ public partial class App : Application
             ToolTipText = "Teams Now Playing",
             Menu = menu,
             Icon = new WindowIcon(
-                AssetLoader.Open(new Uri("avares://TeamsNowPlaying/Assets/app-icon.ico")))
+                AssetLoader.Open(new Uri("avares://SpotifyNowPlaying/Assets/app-icon.ico")))
         };
         _trayIcon.Clicked += (_, _) => ShowMainWindow(desktop);
         _trayIcon.IsVisible = true;

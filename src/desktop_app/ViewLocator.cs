@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using TeamsNowPlaying.ViewModels;
+using SpotifyNowPlaying.ViewModels;
 
-namespace TeamsNowPlaying;
+namespace SpotifyNowPlaying;
 
 /// <summary>
 /// Given a view model, returns the corresponding view if possible.

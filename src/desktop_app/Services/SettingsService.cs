@@ -1,7 +1,7 @@
 using System.Text.Json;
-using TeamsNowPlaying.Models;
+using SpotifyNowPlaying.Models;
 
-namespace TeamsNowPlaying.Services;
+namespace SpotifyNowPlaying.Services;
 
 public sealed class SettingsService
 {
