@@ -1,0 +1,424 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Documentation</h1>
+      <p>Everything you need to set up and configure the app.</p>
+    </div>
+  </section>
+
+  <section class="docs-content">
+    <div class="container">
+      <div class="docs-layout">
+        <nav class="docs-nav" aria-label="Documentation sections">
+          <div class="nav-group">
+            <h4>Getting started</h4>
+            <a href="#prerequisites">Prerequisites</a>
+            <a href="#spotify-app">Spotify Developer App</a>
+            <a href="#azure-app">Azure AD App Registration</a>
+            <a href="#installation">Installation</a>
+          </div>
+          <div class="nav-group">
+            <h4>Configuration</h4>
+            <a href="#first-launch">First Launch</a>
+            <a href="#status-format">Status Format</a>
+            <a href="#polling">Polling Interval</a>
+          </div>
+          <div class="nav-group">
+            <h4>Reference</h4>
+            <a href="#settings-file">Settings File</a>
+            <a href="#troubleshooting">Troubleshooting</a>
+            <a href="#privacy">Privacy</a>
+          </div>
+        </nav>
+
+        <article class="docs-body">
+          <section id="prerequisites">
+            <h2>Prerequisites</h2>
+            <p>Before using the app, you need to register two developer applications: one with Spotify and one with Microsoft Azure (Entra ID). Both are free and take about 5 minutes each.</p>
+
+            <div class="info-callout">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>You only need to do this once. The app stores credentials locally and reconnects automatically on restart.</span>
+            </div>
+          </section>
+
+          <section id="spotify-app">
+            <h2>Spotify Developer App</h2>
+            <ol class="steps-list">
+              <li>Go to the <a href="https://developer.spotify.com/dashboard" target="_blank" rel="noopener">Spotify Developer Dashboard</a></li>
+              <li>Click <strong>Create app</strong></li>
+              <li>Set the <strong>Redirect URI</strong> to: <code>http://localhost:5543/callback</code></li>
+              <li>Copy the <strong>Client ID</strong> &mdash; you'll paste this into the app</li>
+            </ol>
+
+            <div class="code-block">
+              <pre><code>Redirect URI: http://localhost:5543/callback</code></pre>
+            </div>
+          </section>
+
+          <section id="azure-app">
+            <h2>Azure AD (Entra ID) App Registration</h2>
+            <ol class="steps-list">
+              <li>Go to the <a href="https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade" target="_blank" rel="noopener">Azure Portal &rarr; App Registrations</a></li>
+              <li>Click <strong>New registration</strong></li>
+              <li>Set a name (e.g. "Spotify Now Playing")</li>
+              <li>Under <strong>Supported account types</strong>, choose your organisation or "Accounts in any organizational directory"</li>
+              <li>Under <strong>Redirect URI</strong>, add <strong>Public client/native</strong> with value <code>http://localhost</code></li>
+              <li>After creation, go to <strong>API Permissions</strong> &rarr; <strong>Add a permission</strong> &rarr; <strong>Microsoft Graph</strong> &rarr; <strong>Delegated permissions</strong>:</li>
+            </ol>
+
+            <div class="perm-list">
+              <div class="perm-item"><code>Presence.ReadWrite</code> <span>&mdash; Allows setting your Teams status message</span></div>
+              <div class="perm-item"><code>User.Read</code> <span>&mdash; Allows reading your display name</span></div>
+            </div>
+
+            <ol class="steps-list" start="7">
+              <li>Go to <strong>Authentication</strong> &rarr; enable <strong>Allow public client flows</strong></li>
+              <li>Copy the <strong>Application (client) ID</strong> &mdash; you'll paste this into the app</li>
+            </ol>
+          </section>
+
+          <section id="installation">
+            <h2>Installation</h2>
+            <p>Download the latest release for your platform from the <a href="/spotify_nowplaying/download">downloads page</a>. The app ships as a single executable &mdash; no installer needed.</p>
+
+            <p>Or build from source:</p>
+            <div class="code-block">
+              <pre><code>git clone https://github.com/craigvincent/spotify_nowplaying.git
+cd spotify_nowplaying
+dotnet build
+dotnet run --project src/desktop_app</code></pre>
+            </div>
+          </section>
+
+          <section id="first-launch">
+            <h2>First Launch</h2>
+            <p>On first launch, the app appears in your system tray. Right-click the tray icon and choose <strong>Open Settings</strong> to configure:</p>
+
+            <ol class="steps-list">
+              <li>Paste your <strong>Spotify Client ID</strong> and click <strong>Connect</strong> &mdash; a browser opens for Spotify login</li>
+              <li>Paste your <strong>Azure AD Client ID</strong> and click <strong>Connect</strong> &mdash; a browser opens for Microsoft consent</li>
+              <li>Customise the status format if desired</li>
+              <li>Adjust the polling interval</li>
+              <li>Close the settings window &mdash; it hides to the tray and starts working</li>
+            </ol>
+
+            <div class="info-callout">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              <span>The window is minimised to tray, not closed. To quit, right-click the tray icon and choose <strong>Exit</strong>.</span>
+            </div>
+          </section>
+
+          <section id="status-format">
+            <h2>Status Format</h2>
+            <p>Customise how your status message appears using placeholders:</p>
+
+            <div class="code-block">
+              <pre><code>{'{artist}'} &mdash; The name of the artist
+{'{title}'}  &mdash; The name of the track</code></pre>
+            </div>
+
+            <p>Examples:</p>
+            <div class="code-block">
+              <pre><code>{'\u{1f3b5} {artist} - {title}'}            &rarr; 🎵 Radiohead - Creep
+{'{title} by {artist}'}              &rarr; Creep by Radiohead
+{'Listening to: {artist} \u2014 {title}'}  &rarr; Listening to: Radiohead — Creep</code></pre>
+            </div>
+          </section>
+
+          <section id="polling">
+            <h2>Polling Interval</h2>
+            <p>The app checks Spotify for your currently playing track on a configurable interval. Adjust the slider between <strong>5 seconds</strong> (more responsive) and <strong>60 seconds</strong> (less API usage).</p>
+            <p>The default is 10 seconds, which is a good balance.</p>
+          </section>
+
+          <section id="settings-file">
+            <h2>Settings File</h2>
+            <p>All settings are stored in a JSON file at:</p>
+            <div class="code-block">
+              <pre><code>%APPDATA%\TeamsNowPlaying\settings.json     (Windows)
+~/Library/Application Support/TeamsNowPlaying/settings.json  (macOS)
+~/.config/TeamsNowPlaying/settings.json      (Linux)</code></pre>
+            </div>
+            <p>The MSAL token cache is stored alongside as <code>msal_cache.bin</code>. Both files are managed automatically by the app.</p>
+          </section>
+
+          <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+
+            <h3>Spotify connection fails</h3>
+            <ul class="troubleshooting-list">
+              <li>Verify the Client ID is correct</li>
+              <li>Check that the redirect URI in your Spotify Developer Dashboard is exactly <code>http://localhost:5543/callback</code></li>
+              <li>Ensure port 5543 is not blocked by a firewall</li>
+            </ul>
+
+            <h3>Teams connection fails</h3>
+            <ul class="troubleshooting-list">
+              <li>Verify the Client ID and Tenant ID are correct</li>
+              <li>Check that <strong>Allow public client flows</strong> is enabled in Azure</li>
+              <li>Ensure the required API permissions (<code>Presence.ReadWrite</code>, <code>User.Read</code>) are granted</li>
+              <li>Your organisation may require admin consent for these permissions</li>
+            </ul>
+
+            <h3>Status doesn't update</h3>
+            <ul class="troubleshooting-list">
+              <li>Check that both Spotify and Teams show as connected in the settings window</li>
+              <li>Verify that <strong>Enable automatic updates</strong> is checked</li>
+              <li>Try clicking <strong>Disconnect</strong> then <strong>Connect</strong> for both services</li>
+            </ul>
+          </section>
+
+          <section id="privacy">
+            <h2>Privacy</h2>
+            <p>This application runs entirely on your computer:</p>
+            <ul class="privacy-list">
+              <li>No data is sent to any third-party servers other than Spotify (to check playback) and Microsoft Graph (to set your status)</li>
+              <li>No analytics, no telemetry, no tracking</li>
+              <li>All authentication tokens are stored locally on your machine</li>
+              <li>The only network requests are to <code>api.spotify.com</code> and <code>graph.microsoft.com</code></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 5rem 0 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+
+  .docs-content {
+    padding: 1rem 0 5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .docs-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .docs-nav {
+    position: sticky;
+    top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .nav-group h4 {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .nav-group a {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+
+  .nav-group a:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+  }
+
+  .docs-body {
+    min-width: 0;
+  }
+
+  .docs-body section {
+    margin-bottom: 3.5rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .docs-body h2 {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .docs-body h3 {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  .docs-body p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+  }
+
+  .docs-body a {
+    color: var(--accent);
+    border-bottom: 1px solid rgba(29, 185, 84, 0.3);
+    transition: border-color 0.2s;
+  }
+
+  .docs-body a:hover {
+    border-color: var(--accent);
+  }
+
+  .steps-list {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .steps-list li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    padding-left: 0.25rem;
+  }
+
+  .steps-list li::marker {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .troubleshooting-list, .privacy-list {
+    padding-left: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .troubleshooting-list li, .privacy-list li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .troubleshooting-list li::marker, .privacy-list li::marker {
+    color: var(--accent);
+  }
+
+  .code-block {
+    margin: 0.75rem 0 1rem;
+  }
+
+  .code-block pre {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .code-block pre code {
+    background: none;
+    padding: 0;
+    color: var(--text-primary);
+  }
+
+  .info-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: var(--accent-dim);
+    border: 1px solid rgba(29, 185, 84, 0.15);
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+    color: var(--accent);
+  }
+
+  .info-callout svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .info-callout span {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .perm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.5rem 0 0.75rem;
+    padding-left: 1.25rem;
+  }
+
+  .perm-item {
+    display: flex;
+    gap: 0.35rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .perm-item code {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    .docs-layout {
+      grid-template-columns: 1fr;
+    }
+    .docs-nav {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-group {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .nav-group h4 {
+      width: 100%;
+    }
+  }
+</style>

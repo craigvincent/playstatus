@@ -1,0 +1,138 @@
+---
+const currentPath = Astro.url.pathname;
+const baseUrl = "/spotify_nowplaying";
+
+const links = [
+  { href: baseUrl + "/", label: "Home" },
+  { href: baseUrl + "/download", label: "Download" },
+  { href: baseUrl + "/docs", label: "Docs" },
+];
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href={baseUrl + "/"} class="logo" aria-label="Spotify Now Playing home">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect width="32" height="32" rx="6" fill="none" />
+          <circle cx="11" cy="16" r="5.5" fill="none" stroke="#1DB954" stroke-width="2" />
+          <line class="bar bar-1" x1="17" y1="16" x2="17" y2="9" stroke="#1DB954" stroke-width="2" stroke-linecap="round" />
+          <line class="bar bar-2" x1="20" y1="16" x2="20" y2="6" stroke="#1DB954" stroke-width="2" stroke-linecap="round" />
+          <line class="bar bar-3" x1="23" y1="16" x2="23" y2="4" stroke="#1DB954" stroke-width="2" stroke-linecap="round" />
+          <line class="bar bar-4" x1="26" y1="16" x2="26" y2="8" stroke="#1DB954" stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <span class="logo-text">PlayStatus</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        {links.map((link) => {
+          const isActive = currentPath === link.href || (link.href !== baseUrl + "/" && currentPath.startsWith(link.href));
+          return (
+            <a href={link.href} class={isActive ? "nav-link active" : "nav-link"}>
+              {link.label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <a href="https://github.com/craigvincent/spotify_nowplaying" target="_blank" rel="noopener" class="gh-link" aria-label="View on GitHub">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+    background: rgba(6, 6, 11, 0.75);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 0.75rem 0;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    transition: color 0.2s;
+    flex-shrink: 0;
+  }
+
+  .logo:hover {
+    color: var(--accent);
+  }
+
+  .logo-icon .bar {
+    transform-origin: bottom center;
+    animation: equalize 1.2s ease-in-out infinite;
+  }
+  .logo-icon .bar-1 { animation-delay: 0s; }
+  .logo-icon .bar-2 { animation-delay: 0.15s; }
+  .logo-icon .bar-3 { animation-delay: 0.3s; }
+  .logo-icon .bar-4 { animation-delay: 0.45s; }
+
+  .logo-text {
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+  }
+
+  .nav-link.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .gh-link {
+    display: flex;
+    align-items: center;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    padding: 0.3rem;
+    border-radius: 8px;
+  }
+
+  .gh-link:hover {
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 640px) {
+    .header-inner {
+      gap: 1rem;
+    }
+    .logo-text {
+      display: none;
+    }
+  }
+</style>
