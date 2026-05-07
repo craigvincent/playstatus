@@ -1,8 +1,8 @@
 using System.Net;
 using SpotifyAPI.Web;
-using SpotifyNowPlaying.Models;
+using PlayStatus.Models;
 
-namespace SpotifyNowPlaying.Services;
+namespace PlayStatus.Services;
 
 public sealed class SpotifyService : ISpotifyService
 {

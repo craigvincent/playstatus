@@ -1,10 +1,10 @@
 using Microsoft.Extensions.Time.Testing;
 using NSubstitute;
-using SpotifyNowPlaying.Models;
-using SpotifyNowPlaying.Services;
+using PlayStatus.Models;
+using PlayStatus.Services;
 using Xunit;
 
-namespace SpotifyNowPlaying.Tests.Services;
+namespace PlayStatus.Tests.Services;
 
 public class NowPlayingServiceTests : IDisposable
 {

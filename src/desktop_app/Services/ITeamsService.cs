@@ -1,4 +1,4 @@
-namespace SpotifyNowPlaying.Services;
+namespace PlayStatus.Services;
 
 public interface ITeamsService
 {

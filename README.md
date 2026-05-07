@@ -1,11 +1,11 @@
-# Spotify Now Playing
+# PlayStatus
 
 A system-tray application that publishes your currently playing Spotify track to your Microsoft Teams status message.
 
 **[Visit the website](https://playstatus.weblabz.co.uk)** for downloads, setup guides, and full documentation.
 
 Just want to download the latest version of the app? Check out the
-[Latest Release](https://github.com/craigvincent/spotify_nowplaying/releases/latest) page to get the newest version.
+[Latest Release](https://github.com/craigvincent/playstatus/releases/latest) page to get the newest version.
 
 ## Features
 
@@ -29,7 +29,7 @@ Just want to download the latest version of the app? Check out the
 
 1. Go to [Azure Portal → App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
 2. Click **New registration**
-3. Set a name (e.g. "Spotify Now Playing")
+3. Set a name (e.g. "PlayStatus")
 4. Under **Supported account types**, choose your organisation or "Accounts in any organizational directory"
 5. Under **Redirect URI**, add **Public client/native** with value `http://localhost`
 6. After creation, go to **API Permissions** → **Add a permission** → **Microsoft Graph** → **Delegated permissions**:
@@ -42,7 +42,7 @@ Just want to download the latest version of the app? Check out the
 
 ```bash
 # Clone and build
-cd spotify_nowplaying
+cd playstatus
 dotnet build
 
 # Run

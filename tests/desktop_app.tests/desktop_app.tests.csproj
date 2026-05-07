@@ -4,7 +4,7 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <RootNamespace>SpotifyNowPlaying.Tests</RootNamespace>
+    <RootNamespace>PlayStatus.Tests</RootNamespace>
     <!-- Allow test naming conventions (underscores) and suppress test-irrelevant warnings -->
     <NoWarn>$(NoWarn);CA1707;CA1816</NoWarn>
   </PropertyGroup>

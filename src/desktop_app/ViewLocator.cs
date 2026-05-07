@@ -1,9 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using SpotifyNowPlaying.ViewModels;
+using PlayStatus.ViewModels;
 
-namespace SpotifyNowPlaying;
+namespace PlayStatus;
 
 /// <summary>
 /// Given a view model, returns the corresponding view if possible.

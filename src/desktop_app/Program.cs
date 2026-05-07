@@ -1,6 +1,6 @@
 using Avalonia;
 
-namespace SpotifyNowPlaying;
+namespace PlayStatus;
 
 internal sealed class Program
 {

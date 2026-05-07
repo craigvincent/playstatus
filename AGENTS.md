@@ -53,8 +53,8 @@ The solution uses the new `.slnx` format. There is one app + one test project:
 
 ## Settings & store
 
-- Settings JSON: `%APPDATA%/TeamsNowPlaying/settings.json`
-- MSAL token cache: `%APPDATA%/TeamsNowPlaying/msal_cache.bin`
+- Settings JSON: `%APPDATA%/PlayStatus/settings.json`
+- MSAL token cache: `%APPDATA%/PlayStatus/msal_cache.bin`
 - Serialized with `JsonNamingPolicy.CamelCase`
 - `SettingsService` provides static `GetMsalCachePath()` for MSAL integration
 

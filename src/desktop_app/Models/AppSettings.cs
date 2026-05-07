@@ -1,4 +1,4 @@
-namespace SpotifyNowPlaying.Models;
+namespace PlayStatus.Models;
 
 public sealed class SpotifySettings
 {
