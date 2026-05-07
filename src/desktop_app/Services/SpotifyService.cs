@@ -1,6 +1,6 @@
 using System.Net;
-using SpotifyAPI.Web;
 using PlayStatus.Models;
+using SpotifyAPI.Web;
 
 namespace PlayStatus.Services;
 

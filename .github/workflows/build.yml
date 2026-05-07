@@ -36,12 +36,13 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Set version from commit hash
+      - name: Set version
+        id: version
         shell: bash
         run: |
-          SHORT_SHA=$(git rev-parse --short HEAD)
-          echo "VERSION_SUFFIX=${SHORT_SHA}" >> "$GITHUB_ENV"
-          echo "Building version: 0.1.0+${SHORT_SHA}"
+          VERSION="$(date -u +'%Y.%-m').${{ github.run_number }}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "Building version: ${VERSION}"
 
       - name: Publish
         run: >
@@ -51,7 +52,7 @@ jobs:
           --self-contained true
           -p:PublishSingleFile=true
           -p:IncludeNativeLibrariesForSelfExtract=true
-          -p:SourceRevisionId=${{ env.VERSION_SUFFIX }}
+          -p:Version=${{ steps.version.outputs.version }}
           --output ./publish
 
       - name: Upload artifact
@@ -75,9 +76,9 @@ jobs:
       - name: Set version tag
         shell: bash
         run: |
-          SHORT_SHA=$(git rev-parse --short HEAD)
-          echo "TAG_NAME=v0.1.0+${SHORT_SHA}" >> "$GITHUB_ENV"
-          echo "RELEASE_NAME=Build 0.1.0+${SHORT_SHA}" >> "$GITHUB_ENV"
+          VERSION="$(date -u +'%Y.%-m').${{ github.run_number }}"
+          echo "TAG_NAME=v${VERSION}" >> "$GITHUB_ENV"
+          echo "RELEASE_NAME=Build ${VERSION}" >> "$GITHUB_ENV"
 
       - name: Download all artifacts
         uses: actions/download-artifact@v4
