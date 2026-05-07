@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://craigvincent.github.io",
-  base: "/spotify_nowplaying",
+  site: "https://playstatus.weblabz.co.uk",
   devToolbar: { enabled: false },
 });
