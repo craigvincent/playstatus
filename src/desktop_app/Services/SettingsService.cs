@@ -1,12 +1,12 @@
 using System.Text.Json;
-using SpotifyNowPlaying.Models;
+using PlayStatus.Models;
 
-namespace SpotifyNowPlaying.Services;
+namespace PlayStatus.Services;
 
 public sealed class SettingsService : ISettingsService
 {
     private static readonly string SettingsDir =
-        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "TeamsNowPlaying");
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "PlayStatus");
 
     private static readonly string SettingsPath =
         Path.Combine(SettingsDir, "settings.json");

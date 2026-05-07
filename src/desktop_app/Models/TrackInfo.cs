@@ -1,4 +1,4 @@
-namespace SpotifyNowPlaying.Models;
+namespace PlayStatus.Models;
 
 public sealed record TrackInfo(string Artist, string Title)
 {

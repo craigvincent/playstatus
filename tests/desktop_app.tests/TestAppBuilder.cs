@@ -2,9 +2,9 @@ using Avalonia;
 using Avalonia.Headless;
 using Avalonia.Markup.Xaml;
 
-[assembly: AvaloniaTestApplication(typeof(SpotifyNowPlaying.Tests.TestAppBuilder))]
+[assembly: AvaloniaTestApplication(typeof(PlayStatus.Tests.TestAppBuilder))]
 
-namespace SpotifyNowPlaying.Tests;
+namespace PlayStatus.Tests;
 
 public class TestApp : Application
 {

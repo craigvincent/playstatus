@@ -1,7 +1,7 @@
-using SpotifyNowPlaying.Models;
+using PlayStatus.Models;
 using Xunit;
 
-namespace SpotifyNowPlaying.Tests.Models;
+namespace PlayStatus.Tests.Models;
 
 public class TrackInfoTests
 {

@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace SpotifyNowPlaying;
+namespace PlayStatus;
 
 public static class VersionInfo
 {

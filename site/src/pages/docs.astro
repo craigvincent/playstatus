@@ -65,7 +65,7 @@ import Layout from "../layouts/Layout.astro";
             <ol class="steps-list">
               <li>Go to the <a href="https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade" target="_blank" rel="noopener">Azure Portal &rarr; App Registrations</a></li>
               <li>Click <strong>New registration</strong></li>
-              <li>Set a name (e.g. "Spotify Now Playing")</li>
+              <li>Set a name (e.g. "PlayStatus")</li>
               <li>Under <strong>Supported account types</strong>, choose your organisation or "Accounts in any organizational directory"</li>
               <li>Under <strong>Redirect URI</strong>, add <strong>Public client/native</strong> with value <code>http://localhost</code></li>
               <li>After creation, go to <strong>API Permissions</strong> &rarr; <strong>Add a permission</strong> &rarr; <strong>Microsoft Graph</strong> &rarr; <strong>Delegated permissions</strong>:</li>
@@ -88,8 +88,8 @@ import Layout from "../layouts/Layout.astro";
 
             <p>Or build from source:</p>
             <div class="code-block">
-              <pre><code>git clone https://github.com/craigvincent/spotify_nowplaying.git
-cd spotify_nowplaying
+              <pre><code>git clone https://github.com/craigvincent/playstatus.git
+cd playstatus
 dotnet build
 dotnet run --project src/desktop_app</code></pre>
             </div>
@@ -140,9 +140,9 @@ dotnet run --project src/desktop_app</code></pre>
             <h2>Settings File</h2>
             <p>All settings are stored in a JSON file at:</p>
             <div class="code-block">
-              <pre><code>%APPDATA%\TeamsNowPlaying\settings.json     (Windows)
-~/Library/Application Support/TeamsNowPlaying/settings.json  (macOS)
-~/.config/TeamsNowPlaying/settings.json      (Linux)</code></pre>
+              <pre><code>%APPDATA%\PlayStatus\settings.json     (Windows)
+~/Library/Application Support/PlayStatus/settings.json  (macOS)
+~/.config/PlayStatus/settings.json      (Linux)</code></pre>
             </div>
             <p>The MSAL token cache is stored alongside as <code>msal_cache.bin</code>. Both files are managed automatically by the app.</p>
           </section>

@@ -4,11 +4,11 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using Avalonia.Platform;
-using SpotifyNowPlaying.Services;
-using SpotifyNowPlaying.ViewModels;
-using SpotifyNowPlaying.Views;
+using PlayStatus.Services;
+using PlayStatus.ViewModels;
+using PlayStatus.Views;
 
-namespace SpotifyNowPlaying;
+namespace PlayStatus;
 
 [System.Diagnostics.CodeAnalysis.SuppressMessage("IDisposable", "CA1001:Types that own disposable fields should be disposable",
     Justification = "Avalonia Application base class doesn't support IDisposable; _trayIcon is disposed on exit")]
@@ -52,7 +52,7 @@ public partial class App : Application
                 {
                     _trayIcon.ToolTipText = track is not null
                         ? track.Format("{artist} - {title}")
-                        : "Teams Now Playing — Idle";
+                        : "PlayStatus — Idle";
                 }
             };
 
@@ -86,10 +86,10 @@ public partial class App : Application
 
         _trayIcon = new TrayIcon
         {
-            ToolTipText = "Teams Now Playing",
+            ToolTipText = "PlayStatus",
             Menu = menu,
             Icon = new WindowIcon(
-                AssetLoader.Open(new Uri("avares://SpotifyNowPlaying/Assets/app-icon.ico")))
+                AssetLoader.Open(new Uri("avares://PlayStatus/Assets/app-icon.ico")))
         };
         _trayIcon.Clicked += (_, _) => ShowMainWindow(desktop);
         _trayIcon.IsVisible = true;

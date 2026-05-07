@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
-using SpotifyNowPlaying.Models;
+using PlayStatus.Models;
 
-namespace SpotifyNowPlaying.Services;
+namespace PlayStatus.Services;
 
 public interface INowPlayingService
 {

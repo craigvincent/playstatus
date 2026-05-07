@@ -1,10 +1,10 @@
 using NSubstitute;
-using SpotifyNowPlaying.Models;
-using SpotifyNowPlaying.Services;
-using SpotifyNowPlaying.ViewModels;
+using PlayStatus.Models;
+using PlayStatus.Services;
+using PlayStatus.ViewModels;
 using Xunit;
 
-namespace SpotifyNowPlaying.Tests.ViewModels;
+namespace PlayStatus.Tests.ViewModels;
 
 public class MainWindowViewModelTests
 {

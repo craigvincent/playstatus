@@ -5,8 +5,8 @@
     <Nullable>enable</Nullable>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    <RootNamespace>SpotifyNowPlaying</RootNamespace>
-    <AssemblyName>SpotifyNowPlaying</AssemblyName>
+    <RootNamespace>PlayStatus</RootNamespace>
+    <AssemblyName>PlayStatus</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

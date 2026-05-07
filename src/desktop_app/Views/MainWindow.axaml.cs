@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace SpotifyNowPlaying.Views;
+namespace PlayStatus.Views;
 
 public partial class MainWindow : Window
 {

@@ -2,13 +2,13 @@ using Avalonia.Controls;
 using Avalonia.Headless.XUnit;
 using Avalonia.VisualTree;
 using NSubstitute;
-using SpotifyNowPlaying.Models;
-using SpotifyNowPlaying.Services;
-using SpotifyNowPlaying.ViewModels;
-using SpotifyNowPlaying.Views;
+using PlayStatus.Models;
+using PlayStatus.Services;
+using PlayStatus.ViewModels;
+using PlayStatus.Views;
 using Xunit;
 
-namespace SpotifyNowPlaying.Tests.Views;
+namespace PlayStatus.Tests.Views;
 
 public class MainWindowTests
 {
