@@ -1,0 +1,254 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+---
+
+<Layout>
+  <Hero />
+
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <p class="section-subtitle">Three connections and you're done.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3>Connect Spotify</h3>
+            <p>Sign in with your Spotify account. The app gets read-only access to your playback state. That's all it needs.</p>
+          </div>
+          <div class="step-connector" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3>Connect Teams</h3>
+            <p>Sign in with your Microsoft work account. The app uses Microsoft Graph to set your presence status message.</p>
+          </div>
+          <div class="step-connector" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3>Close the window</h3>
+            <p>The app minimizes to your system tray. It polls Spotify on a configurable interval and keeps your Teams status in sync. That's it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Features />
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true" />
+        <h2>Ready to share your soundtrack?</h2>
+        <p>Free, open source, and takes less than a minute to set up.</p>
+        <div class="cta-actions">
+          <a href="/download" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download now
+          </a>
+          <a href="https://github.com/craigvincent/spotify_nowplaying" target="_blank" rel="noopener" class="btn btn-ghost">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .how-it-works {
+    padding: 6rem 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 3.5rem;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .step:hover {
+    border-color: var(--border-medium);
+    background: var(--bg-elevated);
+  }
+
+  .step-number {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--accent);
+    opacity: 0.5;
+    min-width: 3rem;
+  }
+
+  .step-content h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 0.25rem;
+  }
+
+  .step-content p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .step-connector {
+    color: var(--text-muted);
+    opacity: 0.3;
+  }
+
+  @media (max-width: 640px) {
+    .step {
+      grid-template-columns: auto 1fr;
+    }
+    .step-connector {
+      display: none;
+    }
+  }
+
+  /* CTA */
+  .cta {
+    padding: 4rem 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-card {
+    position: relative;
+    text-align: center;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 4rem 2rem;
+    overflow: hidden;
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(29, 185, 84, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-card h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .cta-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+  }
+
+  .cta-actions .btn {
+    flex: 1;
+    max-width: 240px;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
+    transition: all 0.25s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg-deep);
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 40px var(--accent-glow);
+  }
+
+  .btn-ghost {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+  }
+
+  .btn-ghost:hover {
+    background: var(--bg-hover);
+    border-color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .cta-actions .btn {
+      max-width: none;
+    }
+  }
+</style>
