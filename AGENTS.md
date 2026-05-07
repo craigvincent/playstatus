@@ -66,3 +66,14 @@ dotnet publish src/desktop_app/desktop_app.csproj \
   -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true \
   --runtime <rid> --output ./publish
 ```
+
+## Product site
+
+The `site/` directory is an Astro 5 static site (landing page + docs) deployed to GitHub Pages via `.github/workflows/deploy-pages.yml`.
+
+```bash
+cd site
+npm install
+npm run dev     # dev server at localhost:4321
+npm run build   # production build to site/dist/
+```

@@ -2,6 +2,8 @@
 
 A system-tray application that publishes your currently playing Spotify track to your Microsoft Teams status message.
 
+**[Visit the website](https://playstatus.weblabz.co.uk)** for downloads, setup guides, and full documentation.
+
 Just want to download the latest version of the app? Check out the
 [Latest Release](https://github.com/craigvincent/spotify_nowplaying/releases/latest) page to get the newest version.
 
