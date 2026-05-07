@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia.Headless.XUnit" Version="11.3.12" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.12" />
+    <PackageReference Include="Avalonia.Headless.XUnit" Version="11.3.14" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.14" />
     <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" Version="*" />
     <PackageReference Include="NSubstitute" Version="5.*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" />
@@ -20,6 +20,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.22.0" />
   </ItemGroup>
 
   <ItemGroup>
