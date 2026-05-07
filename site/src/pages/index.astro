@@ -199,6 +199,12 @@ import Features from "../components/Features.astro";
     position: relative;
   }
 
+  .cta-actions .btn {
+    flex: 1;
+    max-width: 240px;
+    justify-content: center;
+  }
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -234,5 +240,15 @@ import Features from "../components/Features.astro";
   .btn-ghost:hover {
     background: var(--bg-hover);
     border-color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .cta-actions .btn {
+      max-width: none;
+    }
   }
 </style>
